@@ -1,0 +1,273 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #0f172a;
+    /* slate-900 */
+    color: #f1f5f9;
+    /* slate-100 */
+    font-family: 'Inter', sans-serif;
+    cursor: none;
+    /* Hide default cursor */
+}
+
+body:hover .custom-cursor-dot,
+body:hover .custom-cursor-follower {
+    opacity: 1;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e293b;
+    /* slate-800 */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4f46e5;
+    /* indigo-600 */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6366f1;
+    /* indigo-500 */
+}
+
+.btn-glow-primary {
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-glow-primary:hover,
+.btn-glow-primary:focus {
+    box-shadow: 0 0 15px 2px var(--tw-colors-primary-light);
+    transform: scale(1.05);
+}
+
+.btn-glow-outline {
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-glow-outline:hover,
+.btn-glow-outline:focus {
+    box-shadow: 0 0 15px 0px var(--tw-colors-neutral-100);
+    border-color: var(--tw-colors-neutral-100);
+}
+
+.project-card-container {
+    /* Added for perspective */
+    perspective: 1500px;
+}
+
+.project-card-tilt {
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.project-card-tilt:hover {
+    transform: rotateX(3deg) rotateY(-3deg) scale(1.03) translateZ(20px);
+    /* Adjusted for subtle 3D lift */
+}
+
+.project-card-tilt:hover .project-image-zoom {
+    animation: imageParallaxZoom 0.5s ease-out forwards;
+}
+
+/* Tech tags on card hover */
+.project-card-tilt:hover .tech-tag {
+    /* Staggered animation handled by inline style */
+}
+
+
+.hero-spotlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle 350px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(129, 140, 248, 0.08),
+            /* primary-light with very low alpha */
+            transparent 70%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+}
+
+.animation-delay-200 {
+    animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+    animation-delay: 0.4s;
+}
+
+.animation-delay-600 {
+    animation-delay: 0.6s;
+}
+
+.animation-delay-800 {
+    animation-delay: 0.8s;
+}
+
+/* Custom Cursor Styles */
+.custom-cursor-dot,
+.custom-cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    opacity: 0;
+    /* Hidden initially, shown on body hover */
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    /* Center the cursor elements */
+    transition: opacity 0.3s ease-out;
+}
+
+.custom-cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--tw-colors-primary-light, #818cf8);
+    transition: width 0.2s ease-out, height 0.2s ease-out, background-color 0.2s ease-out;
+}
+
+.custom-cursor-follower {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--tw-colors-secondary-light, #67e8f9);
+    transition: width 0.3s ease-out, height 0.3s ease-out, border 0.3s ease-out, transform 0.1s linear;
+    /* Faster transform for follower */
+}
+
+/* Cursor interactive states */
+body.cursor-pointer .custom-cursor-dot {
+    width: 12px;
+    height: 12px;
+    background-color: var(--tw-colors-secondary-DEFAULT, #06b6d4);
+}
+
+body.cursor-pointer .custom-cursor-follower {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--tw-colors-primary-DEFAULT, #6366f1);
+}
+
+body.cursor-text .custom-cursor-dot {
+    width: 4px;
+    height: 20px;
+    border-radius: 2px;
+    background-color: var(--tw-colors-neutral-100, #f1f5f9);
+}
+
+body.cursor-text .custom-cursor-follower {
+    opacity: 0.3 !important;
+    /* Make follower more subtle for text */
+}
+
+/* Hero SVG Background Styles */
+.hero-svg-bg line {
+    stroke: rgba(129, 140, 248, 0.05);
+    /* very faint primary-light */
+    stroke-width: 1;
+    transition: stroke-opacity 0.5s ease-in-out;
+}
+
+.hero-svg-bg .constellation-point {
+    fill: rgba(103, 232, 249, 0.4);
+    /* faint secondary-light */
+    animation: subtleShimmer 3s ease-in-out infinite alternate;
+}
+
+.hero-svg-bg .constellation-line {
+    stroke: rgba(103, 232, 249, 0.1);
+    /* very faint secondary-light */
+    stroke-width: 0.5px;
+}
+
+/* Underline sweep for nav links */
+.nav-link-underline {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-link-underline::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    /* Adjust as needed */
+    left: 0;
+    background-color: var(--tw-colors-primary-light, #818cf8);
+    transition: width 0.3s ease-out;
+}
+
+.nav-link-underline:hover::after,
+.nav-link-underline.active::after {
+    /* Also show for active link */
+    width: 100%;
+}
+
+.nav-link-underline:hover,
+.nav-link-underline.active {
+    animation: textGlow 1.5s ease-in-out infinite alternate;
+}
+
+/* About me section image slideshow */
+.about-image-slide {
+    animation: imageFade 12s infinite;
+    /* 3 images * 4s per image */
+}
+
+@keyframes imageFade {
+
+    0%,
+    25% {
+        opacity: 1;
+    }
+
+    /* Image 1 visible for 3s (25% of 12s) */
+    33.33%,
+    58.33% {
+        opacity: 0;
+    }
+
+    /* Image 1 fades out, Image 2 fades in */
+    33.34% {
+        opacity: 1;
+    }
+
+    /* Image 2 visible */
+    58.34% {
+        opacity: 0;
+    }
+
+    /* Image 2 fades out */
+    66.66%,
+    91.66% {
+        opacity: 0;
+    }
+
+    /* Image 2 fades out, Image 3 fades in */
+    66.67% {
+        opacity: 1;
+    }
+
+    /* Image 3 visible */
+    91.67%,
+    100% {
+        opacity: 0;
+    }
+
+    /* Image 3 fades out */
+}
