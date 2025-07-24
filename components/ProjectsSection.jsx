@@ -58,6 +58,15 @@ const projectsData = [
     githubUrl: 'https://github.com/sarim-aliii/Urban-Bites---Restaurant',
     liveDemoUrl: 'https://urban-bites-restaurant.onrender.com',
   },
+  {
+    id: 'project7',
+    title: 'CardSpark - Digital Business Card Generator',
+    description: 'An interactive web application for creating, customizing, and sharing digital business cards. Features a real-time editor, 12+ design templates, an accent color picker, AI-powered logo generation, and digital sharing via downloadable vCards and QR codes.',
+    technologies: ['React', 'Vite', 'JavaScript (ES6+)', 'CSS', 'html2canvas', 'jsPDF', 'Stability AI API'],
+    imageUrl: `${PROJECT_PLACEHOLDER_IMAGE_BASE}/4C6EF5/FFFFFF?text=CardSpark`,
+    githubUrl: 'https://github.com/sarim-aliii/CardSpark---Business-Card-Generator',
+    liveDemoUrl: 'https://cardsparkbusinesscardgenerator.netlify.app/',
+  },
 ];
 
 const ProjectsSection = () => {
