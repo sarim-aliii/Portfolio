@@ -46,7 +46,7 @@ const projectsData = [
     description: 'A sleek, responsive weather application that provides real-time weather data for any location. Built by fetching data from the OpenWeatherMap API and designed with a clean, user-friendly interface using Material-UI.',
     technologies: ['React', 'JavaScript (ES6+)', 'Material-UI (MUI)', 'REST APIs'],
     imageUrl: `${PROJECT_PLACEHOLDER_IMAGE_BASE}/06B6D4/FFFFFF?text=Weather+App`,
-    githubUrl: 'https://github.com/sarim-aliii/atmo-weather-app', 
+    githubUrl: 'https://github.com/sarim-aliii/atmo-weather-app',
     liveDemoUrl: 'https://atmo-weather-app.netlify.app',
   },
   {
@@ -66,6 +66,15 @@ const projectsData = [
     imageUrl: `${PROJECT_PLACEHOLDER_IMAGE_BASE}/4C6EF5/FFFFFF?text=CardSpark`,
     githubUrl: 'https://github.com/sarim-aliii/CardSpark---Business-Card-Generator',
     liveDemoUrl: 'https://cardsparkbusinesscardgenerator.netlify.app/',
+  },
+  {
+    id: 'project8',
+    title: 'PocketFlow - Expense Tracker Dashboard',
+    description: 'A comprehensive personal finance dashboard built with React. Features full CRUD functionality, data visualization with dynamic charts, category filtering, multi-level sorting, dark mode, and a recurring transactions module. All data is saved persistently to local storage.',
+    technologies: ['React', 'Vite', 'React Router', 'Chart.js', 'Framer Motion', 'CSS Variables'],
+    imageUrl: `${PROJECT_PLACEHOLDER_IMAGE_BASE}/9B59B6/FFFFFF?text=PocketFlow`,
+    githubUrl: 'https://github.com/sarim-aliii/PocketFlow-Expense-Tracker',
+    liveDemoUrl: 'https://pocketflow-expense-tracker.netlify.app/',
   },
 ];
 
