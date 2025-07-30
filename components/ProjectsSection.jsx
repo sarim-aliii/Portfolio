@@ -76,6 +76,15 @@ const projectsData = [
     githubUrl: 'https://github.com/sarim-aliii/PocketFlow-Expense-Tracker',
     liveDemoUrl: 'https://pocketflow-expense-tracker.netlify.app/',
   },
+  {
+    id: 'project_coview',
+    title: 'Coview - COVID-19 Tracker',
+    description: 'An interactive dashboard that visualizes global COVID-19 data in real-time. Features an interactive Leaflet map with data-driven circles, historical trend graphs via Chart.js, and a dynamic data table. Users can filter data by country and by metric (cases, recovered, deaths) for a comprehensive view.',
+    technologies: ['React', 'Vite', 'Material-UI', 'Leaflet', 'React-Leaflet', 'Chart.js', 'Numeral.js', 'CSS'],
+    imageUrl: `${PROJECT_PLACEHOLDER_IMAGE_BASE}/CC1034/FFFFFF?text=Coview`,
+    githubUrl: 'https://github.com/sarim-aliii/Coview---Covid-19-Tracker.git',
+    liveDemoUrl: 'https://coview-virus-tracker.netlify.app/',
+  },
 ];
 
 const ProjectsSection = () => {
