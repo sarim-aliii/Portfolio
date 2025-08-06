@@ -85,6 +85,15 @@ const projectsData = [
     githubUrl: 'https://github.com/sarim-aliii/Coview---Covid-19-Tracker.git',
     liveDemoUrl: 'https://coview-virus-tracker.netlify.app/',
   },
+  {
+    id: 'project_spamurai',
+    title: 'Spamurai - Intelligent Spam Detector',
+    description: 'An intelligent spam detection tool that analyzes both raw text and the content of live web pages. Features an efficient machine learning model, interactive visualizations with Altair explaining the predictions, and a feedback loop for continuous improvement. The entire application is built with a user-friendly Streamlit web interface.',
+    technologies: ['Python', 'Streamlit', 'Scikit-learn', 'Pandas', 'Altair', 'BeautifulSoup', 'Requests'],
+    imageUrl: `${PROJECT_PLACEHOLDER_IMAGE_BASE}/333333/FFFFFF?text=Spamurai`,
+    githubUrl: 'https://github.com/sarim-aliii/Spamurai--Spam-Email-Detector',
+    liveDemoUrl: 'https://spamurai--spam-email-detector.streamlit.app/'
+  }
 ];
 
 const ProjectsSection = () => {
