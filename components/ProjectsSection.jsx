@@ -77,7 +77,7 @@ const projectsData = [
     liveDemoUrl: 'https://pocketflow-expense-tracker.netlify.app/',
   },
   {
-    id: 'project_coview',
+    id: 'project9',
     title: 'Coview - COVID-19 Tracker',
     description: 'An interactive dashboard that visualizes global COVID-19 data in real-time. Features an interactive Leaflet map with data-driven circles, historical trend graphs via Chart.js, and a dynamic data table. Users can filter data by country and by metric (cases, recovered, deaths) for a comprehensive view.',
     technologies: ['React', 'Vite', 'Material-UI', 'Leaflet', 'React-Leaflet', 'Chart.js', 'Numeral.js', 'CSS'],
@@ -86,13 +86,22 @@ const projectsData = [
     liveDemoUrl: 'https://coview-virus-tracker.netlify.app/',
   },
   {
-    id: 'project_spamurai',
+    id: 'project10',
     title: 'Spamurai - Intelligent Spam Detector',
     description: 'An intelligent spam detection tool that analyzes both raw text and the content of live web pages. Features an efficient machine learning model, interactive visualizations with Altair explaining the predictions, and a feedback loop for continuous improvement. The entire application is built with a user-friendly Streamlit web interface.',
     technologies: ['Python', 'Streamlit', 'Scikit-learn', 'Pandas', 'Altair', 'BeautifulSoup', 'Requests'],
     imageUrl: `${PROJECT_PLACEHOLDER_IMAGE_BASE}/333333/FFFFFF?text=Spamurai`,
     githubUrl: 'https://github.com/sarim-aliii/Spamurai--Spam-Email-Detector',
     liveDemoUrl: 'https://spamurai--spam-email-detector.streamlit.app/'
+  },
+  {
+    id: 'project11',
+    title: 'AgentDoc - A Conversational RAG Assistant',
+    description: 'A sophisticated, conversational RAG (Retrieval-Augmented Generation) assistant built from the ground up. AgentDoc provides accurate, context-aware answers from a custom knowledge base. It features a full-featured Streamlit web interface, conversational memory to handle follow-up questions, a persistent chat history with SQLite, and robust security guardrails. The entire project is built using a modern, local-first tech stack.',
+    technologies: ['Python', 'Streamlit', 'LangChain', 'Hugging Face Transformers', 'ChromaDB', 'SQLite', 'Pandas', 'Pypdf'],
+    imageUrl: `${PROJECT_PLACEHOLDER_IMAGE_BASE}/333333/FFFFFF?text=AgentDoc`,
+    githubUrl: 'https://github.com/sarim-aliii/AgentDoc--RAG-Chat-Assistant',
+    liveDemoUrl: 'https://agentdoc--rag-chat-assistant.streamlit.app/'
   }
 ];
 
