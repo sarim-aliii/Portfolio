@@ -102,6 +102,15 @@ const projectsData = [
     imageUrl: `${PROJECT_PLACEHOLDER_IMAGE_BASE}/333333/FFFFFF?text=AgentDoc`,
     githubUrl: 'https://github.com/sarim-aliii/AgentDoc--RAG-Chat-Assistant',
     liveDemoUrl: 'https://agentdoc--rag-chat-assistant.streamlit.app/'
+  },
+  {
+    "id": "project12",
+    "title": "Ensemble AI Tag Extractor - A Multi-Method Analysis Tool",
+    "description": "A sophisticated text analysis application that uses a multi-method ensemble to provide robust and context-aware keyword extraction. The system orchestrates three parallel methods (a simple Gazetteer search, a spaCy NER model, and an LLM extractor) using LangGraph. A final LLM agent aggregates and ranks the combined results to identify the most significant tags. The entire pipeline is wrapped in a full-featured Streamlit web interface with interactive visualizations, including color-coded text highlighting and tag frequency charts.",
+    "technologies": ["Python", "Streamlit", "LangGraph", "LangChain", "Google Gemini", "spaCy", "Pandas", "Matplotlib", "Pydantic"],
+    "imageUrl": "${PROJECT_PLACEHOLDER_IMAGE_BASE}/6A0DAD/FFFFFF?text=Ensemble+Tag+Extractor",
+    "githubUrl": "https://github.com/sarim-aliii/ensemble-ai-tag-extractor",
+    "liveDemoUrl": "https://ensemble-ai-tag-extractor.streamlit.app/"
   }
 ];
 
