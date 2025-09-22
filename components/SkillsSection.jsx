@@ -4,7 +4,8 @@ import Section from './Section';
 
 const skillsData = [
   { name: 'Java', proficiency: 'Proficient', category: 'Programming Languages', description: "Robust, object-oriented language for enterprise-level application development, Android apps, and large systems." },
-  { name: 'JavaScript', proficiency: 'Proficient', category: 'Programming Languages', description: "Core language for web development, enabling interactive and dynamic content on websites." },
+  { name: 'JavaScript(ES6+)', proficiency: 'Proficient', category: 'Programming Languages', description: "Core language for web development, enabling interactive and dynamic content on websites." },
+  { name: 'TypeScript', proficiency: 'Proficient', category: 'Programming Languages', description: "A statically typed superset of JavaScript that enhances code quality, scalability, and maintainability with type safety and modern development features." },
   { name: 'Python', proficiency: 'Familiar', category: 'Programming Languages', description: "Versatile language known for its readability, widely used in web development, data science, AI, and scripting." },
 
   { name: 'React', proficiency: 'Proficient', category: 'Frameworks/Libraries', description: "A popular JavaScript library for building declarative and efficient user interfaces based on components." },
