@@ -9,6 +9,8 @@ const navLinks = [
   { id: SECTION_IDS.SKILLS, label: 'Skills' },
   { id: SECTION_IDS.PROJECTS, label: 'Projects' },
   { id: SECTION_IDS.EXPERIENCE, label: 'Experience' },
+  { id: SECTION_IDS.COMPETITION, label: 'Competitions' },
+  { id: SECTION_IDS.COURSE, label: 'Courses' },
   { id: SECTION_IDS.CONTACT, label: 'Contact' },
 ];
 

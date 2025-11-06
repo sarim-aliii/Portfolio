@@ -7,6 +7,8 @@ import ProjectsSection from './components/ProjectsSection';
 import ExperienceSection from './components/ExperienceSection';
 import ContactSection from './components/ContactSection';
 import BackToTopButton from './components/BackToTopButton';
+import CompetitionsSection from "./components/CompetitionsSection";
+import CoursesSection from "./components/CoursesSection";
 
 
 const App = () => {
@@ -81,6 +83,8 @@ const App = () => {
         <SkillsSection />
         <ProjectsSection />
         {/* <ExperienceSection /> */}
+        <CompetitionsSection />
+        <CoursesSection />
         <ContactSection />
       </main>
 
