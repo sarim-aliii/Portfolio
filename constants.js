@@ -9,7 +9,7 @@ export const SECTION_IDS = {
   COURSE: 'courses',
 };
 
-export const RESUME_DOWNLOAD_LINK = "https://github.com/sarim-aliii/Portfolio/blob/main/Sarim_resume.pdf"; 
+export const RESUME_DOWNLOAD_LINK = "https://github.com/sarim-aliii/Portfolio/blob/main/Resume.pdf"; 
 export const PHOTO_URL = "https://avatars.githubusercontent.com/u/145320874?v=4";
 export const PROJECT_PLACEHOLDER_IMAGE_BASE = "https://placehold.co/600x400";
 
