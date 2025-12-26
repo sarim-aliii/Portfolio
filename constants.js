@@ -9,11 +9,24 @@ export const SECTION_IDS = {
   COURSE: 'courses',
 };
 
-export const RESUME_DOWNLOAD_LINK = "https://github.com/sarim-aliii/Portfolio/blob/main/Resume.pdf"; 
+export const RESUME_DOWNLOAD_LINK = "https://github.com/sarim-aliii/Portfolio/blob/main/Resume.pdf";
 export const PHOTO_URL = "https://avatars.githubusercontent.com/u/145320874?v=4";
 export const PROJECT_PLACEHOLDER_IMAGE_BASE = "https://placehold.co/600x400";
 
+
 export const competitions = [
+  {
+    "title": "GHCI 25 Hackathon | Unbound with GenAI",
+    "organization": "Backbase, AnitaB.org India & mycareer.net (HirePro)",
+    "date": "2025",
+    "highlight": "🎯 Hackathon Participant",
+    "link": "https://drive.google.com/file/d/1ayC0lxStsHetAxVbSJnHbupCokto8srC/view?usp=sharing",
+    "points": [
+      "Actively participated in the GHCI 25 Hackathon focused on Generative AI",
+      "Collaborated on innovative solutions aimed at breaking barriers and creating impact",
+      "Engaged in problem-solving aligned with real-world industry challenges"
+    ]
+  },
   {
     title: "ALGOTHON - PES DAY 2025",
     organization: "BMSCE IEEE PES & SC + BMSCE ACM",
