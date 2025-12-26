@@ -6,6 +6,15 @@ import ProjectCard from './ProjectCard';
 const projectsData = [
   {
     id: 'project1',
+    title: 'Kairon AI',
+    description: 'An all-in-one AI study assistant featuring an interactive Tutor with multiple personas (Socratic, ELI5), automated Flashcard generation with Spaced Repetition, Exam Mode simulations, and Code Analysis. Includes advanced features like Voice interaction, dynamic Concept Maps using React Flow, and Interview Preparation tools. Powered by Google Gemini.',
+    technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Google Gemini API', 'Tailwind CSS', 'React Flow', 'Firebase'],
+    imageUrl: `${PROJECT_PLACEHOLDER_IMAGE_BASE}/dc2626/FFFFFF?text=Kairon+AI`,
+    githubUrl: 'https://github.com/sarim-aliii/version2',
+    liveDemoUrl: 'https://kaironaiapp.netlify.app/',
+},
+  {
+    id: 'project2',
     title: 'Airbnb Clone',
     description: 'A full-stack property rental platform inspired by Airbnb. Features user authentication, property listings, image uploads with Cloudinary, and interactive maps with Mapbox. Built with Node.js, Express, and EJS for server-side rendering.',
     technologies: ['Node.js', 'Express', 'MongoDB', 'EJS', 'Passport.js', 'Mapbox', 'Cloudinary'],
@@ -14,7 +23,7 @@ const projectsData = [
     liveDemoUrl: 'https://airbnb-clone-hj4h.onrender.com',
   },
   {
-    id: 'project2',
+    id: 'project3',
     title: 'Personal Portfolio Website',
     description: 'This portfolio website, designed to showcase my skills and projects. Built with React and Tailwind CSS.',
     technologies: ['React', 'Tailwind CSS'],
@@ -23,7 +32,7 @@ const projectsData = [
     liveDemoUrl: 'https://sarim-ali-portfolio.netlify.app/',
   },
   {
-    id: 'project3',
+    id: 'project4',
     title: 'Closure - Student Community App',
     description: 'An interactive platform designed to connect students, featuring forums, resource sharing, and real-time chat. The app facilitates collaboration and communication within a campus community, all powered by a MERN stack with real-time capabilities.',
     technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Redux', 'Tailwind CSS'],
@@ -32,7 +41,7 @@ const projectsData = [
     liveDemoUrl: '#',
   },
   {
-    id: 'project4',
+    id: 'project5',
     title: 'Docket - React Todo App',
     description: 'A dynamic and responsive to-do list application built with React. Features include creating, editing, deleting, and filtering tasks, with all data saved to the browser\'s local storage for persistence.',
     technologies: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
@@ -41,7 +50,7 @@ const projectsData = [
     liveDemoUrl: 'https://docket-todo-app.netlify.app/',
   },
   {
-    id: 'project5',
+    id: 'project6',
     title: 'Atmo - Weather App',
     description: 'A sleek, responsive weather application that provides real-time weather data for any location. Built by fetching data from the OpenWeatherMap API and designed with a clean, user-friendly interface using Material-UI.',
     technologies: ['React', 'JavaScript (ES6+)', 'Material-UI (MUI)', 'REST APIs'],
@@ -50,7 +59,7 @@ const projectsData = [
     liveDemoUrl: 'https://atmo-weather-app.netlify.app',
   },
   {
-    id: 'project6',
+    id: 'project7',
     title: 'Urban Bites - Restaurant Website',
     description: 'A visually appealing and fully responsive website for a modern restaurant. Features a dynamic menu, an elegant image gallery, and a functional contact form. Designed in Figma and built to provide a seamless user experience for customers.',
     technologies: ['React', 'JavaScript (ES6+)', 'Tailwind CSS', 'Figma'],
@@ -59,7 +68,7 @@ const projectsData = [
     liveDemoUrl: 'https://urban-bites-restaurant.onrender.com',
   },
   {
-    id: 'project7',
+    id: 'project8',
     title: 'CardSpark - Digital Business Card Generator',
     description: 'An interactive web application for creating, customizing, and sharing digital business cards. Features a real-time editor, 12+ design templates, an accent color picker, AI-powered logo generation, and digital sharing via downloadable vCards and QR codes.',
     technologies: ['React', 'Vite', 'JavaScript (ES6+)', 'CSS', 'html2canvas', 'jsPDF', 'Stability AI API'],
@@ -68,7 +77,7 @@ const projectsData = [
     liveDemoUrl: 'https://cardsparkbusinesscardgenerator.netlify.app/',
   },
   {
-    id: 'project8',
+    id: 'project9',
     title: 'PocketFlow - Expense Tracker Dashboard',
     description: 'A comprehensive personal finance dashboard built with React. Features full CRUD functionality, data visualization with dynamic charts, category filtering, multi-level sorting, dark mode, and a recurring transactions module. All data is saved persistently to local storage.',
     technologies: ['React', 'Vite', 'React Router', 'Chart.js', 'Framer Motion', 'CSS Variables'],
@@ -77,7 +86,7 @@ const projectsData = [
     liveDemoUrl: 'https://pocketflow-expense-tracker.netlify.app/',
   },
   {
-    id: 'project9',
+    id: 'project10',
     title: 'Coview - COVID-19 Tracker',
     description: 'An interactive dashboard that visualizes global COVID-19 data in real-time. Features an interactive Leaflet map with data-driven circles, historical trend graphs via Chart.js, and a dynamic data table. Users can filter data by country and by metric (cases, recovered, deaths) for a comprehensive view.',
     technologies: ['React', 'Vite', 'Material-UI', 'Leaflet', 'React-Leaflet', 'Chart.js', 'Numeral.js', 'CSS'],
@@ -86,7 +95,7 @@ const projectsData = [
     liveDemoUrl: 'https://coview-virus-tracker.netlify.app/',
   },
   {
-    id: 'project10',
+    id: 'project11',
     title: 'Spamurai - Intelligent Spam Detector',
     description: 'An intelligent spam detection tool that analyzes both raw text and the content of live web pages. Features an efficient machine learning model, interactive visualizations with Altair explaining the predictions, and a feedback loop for continuous improvement. The entire application is built with a user-friendly Streamlit web interface.',
     technologies: ['Python', 'Streamlit', 'Scikit-learn', 'Pandas', 'Altair', 'BeautifulSoup', 'Requests'],
@@ -95,7 +104,7 @@ const projectsData = [
     liveDemoUrl: 'https://spamurai--spam-email-detector.streamlit.app/'
   },
   {
-    id: 'project11',
+    id: 'project12',
     title: 'AgentDoc - A Conversational RAG Assistant',
     description: 'A sophisticated, conversational RAG (Retrieval-Augmented Generation) assistant built from the ground up. AgentDoc provides accurate, context-aware answers from a custom knowledge base. It features a full-featured Streamlit web interface, conversational memory to handle follow-up questions, a persistent chat history with SQLite, and robust security guardrails. The entire project is built using a modern, local-first tech stack.',
     technologies: ['Python', 'Streamlit', 'LangChain', 'Hugging Face Transformers', 'ChromaDB', 'SQLite', 'Pandas', 'Pypdf'],
@@ -104,7 +113,7 @@ const projectsData = [
     liveDemoUrl: 'https://agentdoc--rag-chat-assistant.streamlit.app/'
   },
   {
-    "id": "project12",
+    "id": "project13",
     "title": "Ensemble AI Tag Extractor - A Multi-Method Analysis Tool",
     "description": "A sophisticated text analysis application that uses a multi-method ensemble to provide robust and context-aware keyword extraction. The system orchestrates three parallel methods (a simple Gazetteer search, a spaCy NER model, and an LLM extractor) using LangGraph. A final LLM agent aggregates and ranks the combined results to identify the most significant tags. The entire pipeline is wrapped in a full-featured Streamlit web interface with interactive visualizations, including color-coded text highlighting and tag frequency charts.",
     "technologies": ["Python", "Streamlit", "LangGraph", "LangChain", "Google Gemini", "spaCy", "Pandas", "Matplotlib", "Pydantic"],
