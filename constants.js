@@ -16,9 +16,22 @@ export const PROJECT_PLACEHOLDER_IMAGE_BASE = "https://placehold.co/600x400";
 
 export const competitions = [
   {
+    "title": "Winter of Code Social 2025",
+    "organization": "Code Social",
+    "date": "Nov 2025 - Jan 2026",
+    "highlight": "💻 Open Source Contributor",
+    "link": "https://drive.google.com/file/d/10F7h3wsxgFwHtFVGuDVyOJKVop_7IQMq/view?usp=sharing",
+    "points": [
+      "Successfully completed Winter of Code Social 2025 as a Contributor",
+      "Contributed to open-source projects with a focus on collaborative learning and development",
+      "Engaged in real-world development practices including version control, issue tracking, and code reviews",
+      "Worked alongside a community of developers to build impactful and scalable solutions"
+    ]
+  },
+  {
     "title": "GHCI 25 Hackathon | Unbound with GenAI",
     "organization": "Backbase, AnitaB.org India & mycareer.net (HirePro)",
-    "date": "2025",
+    "date": "Dec 2025",
     "highlight": "🎯 Hackathon Participant",
     "link": "https://drive.google.com/file/d/1ayC0lxStsHetAxVbSJnHbupCokto8srC/view?usp=sharing",
     "points": [
