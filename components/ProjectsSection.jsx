@@ -11,7 +11,7 @@ const projectsData = [
     technologies: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Google Gemini API', 'Tailwind CSS', 'React Flow', 'Firebase'],
     imageUrl: `${PROJECT_PLACEHOLDER_IMAGE_BASE}/dc2626/FFFFFF?text=Kairon+AI`,
     githubUrl: 'https://github.com/sarim-aliii/version2',
-    liveDemoUrl: 'https://kaironaiapp.netlify.app/',
+    liveDemoUrl: 'https://version2-mdrc.onrender.com/',
 },
   {
     id: 'project2',
