@@ -120,6 +120,24 @@ const projectsData = [
     "imageUrl": `${PROJECT_PLACEHOLDER_IMAGE_BASE}/6A0DAD/FFFFFF?text=Ensemble+Tag+Extractor`,
     "githubUrl": "https://github.com/sarim-aliii/ensemble-ai-tag-extractor",
     "liveDemoUrl": "https://ensemble-ai-tag-extractor.streamlit.app/"
+  },
+  {
+    "id": "project14",
+    "title": "ReelFeel: IMDB Movie Review Sentiment Analysis",
+    "description": "A deep learning web application that classifies movie reviews as Positive or Negative using Recurrent Neural Networks (RNN). The system features end-to-end NLP preprocessing, including tokenization and sequence padding, to deliver real-time sentiment scores. The application is built with a minimalist Streamlit interface and includes interactive elements like word cloud generation to visualize impactful keywords from user input.",
+    "technologies": ["Python", "TensorFlow", "Keras", "Streamlit", "RNN", "NLP", "Scikit-learn", "WordCloud", "NumPy"],
+    "imageUrl": "https://placehold.co/600x400/003366/FFFFFF?text=ReelFeel+Sentiment+Analysis",
+    "githubUrl": "https://github.com/sarim-aliii/imdb-sentiment-rnn",
+    "liveDemoUrl": "https://imdb-movie-review-analysis-rnn.streamlit.app/"
+  },
+  {
+    "id": "project15",
+    "title": "Next Word Prediction using LSTM",
+    "description": "An interactive deep learning application that uses Long Short-Term Memory (LSTM) networks to predict the most likely succeeding word in a given text sequence. The system features a sophisticated language model trained to capture long-range dependencies in text, providing Top-K predictions with associated confidence scores. Deployed via Streamlit, the app utilizes model caching for high-performance inference and real-time user interaction.",
+    "technologies": ["Python", "TensorFlow", "Keras", "LSTM", "Streamlit", "NumPy", "Pickle", "NLP"],
+    "imageUrl": "https://placehold.co/600x400/2E7D32/FFFFFF?text=Next+Word+LSTM+Predictor",
+    "githubUrl": "https://github.com/sarim-aliii/next-word-prediction-lstm",
+    "liveDemoUrl": "https://sentence-next-word-prediction-lstm.streamlit.app/"
   }
 ];
 
