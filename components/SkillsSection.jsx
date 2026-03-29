@@ -1,7 +1,13 @@
+import { useRef } from 'react';
 import { SECTION_IDS } from '../constants';
 import Section from './Section';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
 
+// ... (Keep your existing skillsData array exactly as it is) ...
 const skillsData = [
   { name: 'Java', proficiency: 'Proficient', category: 'Programming Languages', description: "Robust, object-oriented language for enterprise-level application development, Android apps, and large systems." },
   { name: 'JavaScript(ES6+)', proficiency: 'Proficient', category: 'Programming Languages', description: "Core language for web development, enabling interactive and dynamic content on websites." },
@@ -34,59 +40,99 @@ const skillsData = [
   { name: 'MySQL', proficiency: 'Proficient', category: 'Databases', description: "Widely-used open-source relational database management system, popular for web applications." },
 
   { name: 'Git & GitHub', proficiency: 'Expert', category: 'Tools', description: "Essential version control system (Git) and web-based hosting service (GitHub) for collaboration and code management." },
-  {
-    name: 'Firebase', proficiency: 'Expert', category: 'Tools', description: "Google's Backend-as-a-Service (BaaS) platform for building web and mobile apps with services like authentication, NoSQL databases, and hosting."
-  },
-  {
-    name: 'Appwrite', proficiency: 'Proficient', category: 'Tools', description: "An open-source, self-hostable Backend-as-a-Service (BaaS) platform that provides developers with a set of APIs for authentication, databases, and storage."
-  },
+  { name: 'Firebase', proficiency: 'Expert', category: 'Tools', description: "Google's Backend-as-a-Service (BaaS) platform for building web and mobile apps with services like authentication, NoSQL databases, and hosting." },
+  { name: 'Appwrite', proficiency: 'Proficient', category: 'Tools', description: "An open-source, self-hostable Backend-as-a-Service (BaaS) platform that provides developers with a set of APIs for authentication, databases, and storage." },
   { name: 'Figma', proficiency: 'Proficient', category: 'Tools', description: "A collaborative interface design tool for creating wireframes, prototypes, and user interfaces." },
-
 
   { name: 'Agile Development', proficiency: 'Proficient', category: 'Concepts', description: "Iterative approach to project management and software development that helps teams deliver value faster." },
   { name: 'RESTful APIs', proficiency: 'Expert', category: 'Concepts', description: "Architectural style for designing networked applications, focusing on stateless client-server communication." },
   { name: 'Data Structures & Algorithms', proficiency: 'Expert', category: 'Concepts', description: "Fundamental computer science concepts for organizing data efficiently and solving problems effectively." },
 ];
 
-
-const proficiencyColors = {
-  'Expert': 'bg-green-500/80 text-green-50',
-  'Proficient': 'bg-sky-500/80 text-sky-50',
-  'Familiar': 'bg-yellow-500/80 text-yellow-50',
+// Upgraded to modern, translucent badge styles
+const proficiencyStyles = {
+  'Expert': 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+  'Proficient': 'bg-sky-500/10 text-sky-400 border-sky-500/20',
+  'Familiar': 'bg-amber-500/10 text-amber-400 border-amber-500/20',
 };
 
 const SkillsSection = () => {
+  const containerRef = useRef(null);
   const categories = Array.from(new Set(skillsData.map(skill => skill.category)));
 
+  useGSAP(() => {
+    // Select all category blocks
+    const categoryBlocks = gsap.utils.toArray('.skill-category-block');
+
+    categoryBlocks.forEach((block) => {
+      const title = block.querySelector('.category-title');
+      const items = block.querySelectorAll('.skill-item');
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: block,
+          start: 'top 85%',
+        }
+      });
+
+      // Set initial state
+      gsap.set(title, { x: -20, opacity: 0 });
+      gsap.set(items, { y: 20, opacity: 0, scale: 0.95 });
+
+      // Animate title then stagger the skill items
+      tl.to(title, { x: 0, opacity: 1, duration: 0.5, ease: 'power3.out' })
+        .to(items, { 
+          y: 0, 
+          opacity: 1, 
+          scale: 1, 
+          duration: 0.5, 
+          stagger: 0.05, // Fast pop-in effect
+          ease: 'back.out(1.5)' 
+        }, "-=0.3");
+    });
+  }, { scope: containerRef });
+
   return (
-    <Section id={SECTION_IDS.SKILLS} title="My Skills" className="bg-neutral-900">
-      <div className="space-y-12">
+    <Section id={SECTION_IDS.SKILLS} title="My Technical Skills" className="bg-neutral-900 overflow-hidden">
+      <div ref={containerRef} className="space-y-16 max-w-5xl mx-auto">
         {categories.map(category => (
-          <div key={category}>
-            <h3 className="text-2xl font-semibold text-primary-light mb-6">{category}</h3>
-            <div className="flex flex-wrap gap-4">
+          <div key={category} className="skill-category-block">
+            
+            <h3 className="category-title text-2xl font-bold text-neutral-100 mb-8 flex items-center">
+              <span className="w-8 h-px bg-primary mr-4 hidden sm:block"></span>
+              {category}
+            </h3>
+            
+            <div className="flex flex-wrap gap-4 sm:gap-5">
               {skillsData
                 .filter(skill => skill.category === category)
-                .map((skill, index) => (
+                .map((skill) => (
                   <div
                     key={skill.name}
-                    className="group relative bg-neutral-800 p-4 rounded-lg shadow-lg hover:shadow-primary/50 
-                             opacity-0 animate-skill-item-appear" // Base for animation
-                    style={{ animationDelay: `${index * 0.1}s` }} // Staggered delay
+                    className="skill-item group relative bg-neutral-800/40 backdrop-blur-sm border border-neutral-700/50 p-4 rounded-xl hover:bg-neutral-800 hover:border-primary/50 transition-all duration-300 cursor-default flex-grow sm:flex-grow-0 min-w-[140px]" 
                   >
-                    <div className="flex items-center justify-between transition-transform duration-300 group-hover:scale-105">
-                      <span className="text-neutral-100 font-medium">{skill.name}</span>
+                    <div className="flex flex-col h-full justify-between gap-3">
+                      <span className="text-neutral-100 font-semibold text-lg tracking-wide">{skill.name}</span>
+                      <span className={`self-start text-xs px-3 py-1 rounded-full border ${proficiencyStyles[skill.proficiency]}`}>
+                        {skill.proficiency}
+                      </span>
                     </div>
-                    <span className={`mt-2 inline-block text-xs px-2.5 py-1 rounded-full ${proficiencyColors[skill.proficiency]}`}>
-                      {skill.proficiency}
-                    </span>
+                    
+                    {/* Tooltip Hover Effect */}
                     {skill.description && (
-                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 p-3 
-                                   bg-neutral-700 text-neutral-100 text-xs rounded-md shadow-xl 
-                                   opacity-0 invisible group-hover:opacity-100 group-hover:visible 
-                                   transition-all duration-300 ease-in-out pointer-events-none z-20">
-                        <p className="font-semibold text-sm mb-1 text-primary-light">{skill.name}</p>
-                        {skill.description}
+                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 w-64 p-4 
+                                     bg-neutral-800 border border-neutral-700 text-neutral-300 text-sm rounded-xl shadow-2xl 
+                                     opacity-0 invisible group-hover:opacity-100 group-hover:visible 
+                                     transition-all duration-300 ease-in-out pointer-events-none z-20
+                                     group-hover:-translate-y-2">
+                        {/* Tooltip arrow */}
+                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-px 
+                                        border-8 border-transparent border-t-neutral-700"></div>
+                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-[2px] 
+                                        border-8 border-transparent border-t-neutral-800"></div>
+                        
+                        <p className="font-bold text-primary-light mb-1.5">{skill.name}</p>
+                        <p className="leading-relaxed">{skill.description}</p>
                       </div>
                     )}
                   </div>

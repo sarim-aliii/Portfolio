@@ -1,84 +1,102 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const TimelineItem = ({ experience, isLast }) => {
-  // Corrected: Removed the <HTMLDivElement> TypeScript type
+// Register GSAP Plugin
+gsap.registerPlugin(ScrollTrigger);
+
+const TimelineItem = ({ experience, index, isLast }) => {
   const itemRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [lineHeight, setLineHeight] = useState(0);
+  const dotRef = useRef(null);
+  const cardRef = useRef(null);
 
-  useEffect(() => {
-    if (itemRef.current && !isLast) {
-        // Calculate height from the dot to the bottom of the content, or a fixed reasonable height.
-        // For simplicity, let's use a dynamic calculation based on content height.
-        // This might need adjustment based on final styling.
-        const contentHeight = itemRef.current.querySelector('.timeline-content')?.getBoundingClientRect().height || 100;
-        setLineHeight(contentHeight + 30); // Add some padding below content
-    }
-  }, [experience, isLast]);
+  // Determine if the card should be on the left or right side of the central line
+  // (Defaults to everything on the right for mobile screens)
+  const isEven = index % 2 === 0;
 
+  useGSAP(() => {
+    // Create a specific timeline for this item that triggers when it scrolls into view
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: itemRef.current,
+        start: "top 80%", // Trigger when the top of this item hits 80% down the viewport
+        toggleActions: "play none none reverse" // Play down, reverse up
+      }
+    });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
+    // 1. Animate the timeline dot (pop in and glow)
+    tl.fromTo(dotRef.current, 
+      { scale: 0, opacity: 0, backgroundColor: '#262626', borderColor: '#404040' }, // neutral-800 / neutral-700
+      { scale: 1, opacity: 1, backgroundColor: '#818cf8', borderColor: '#171717', duration: 0.5, ease: 'back.out(2)' } // primary-light / neutral-900
+    )
+    // 2. Animate the experience card sliding in
+    .fromTo(cardRef.current,
+      { 
+        x: isEven ? 50 : -50, // Slide from right if even, left if odd
+        opacity: 0,
+        y: 20 
       },
-      { threshold: 0.2 } // Trigger when 20% of the item is visible
+      { 
+        x: 0, 
+        y: 0, 
+        opacity: 1, 
+        duration: 0.6, 
+        ease: 'power3.out' 
+      },
+      "-=0.3" // Start the card slide slightly before the dot finishes popping
     );
 
-    const currentRef = itemRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
-
-  const svgLineInitialLength = lineHeight; // Start with full length for dash array
+  }, { scope: itemRef });
 
   return (
-    <div ref={itemRef} className={`relative pl-10 py-4 group ${isVisible ? 'opacity-100 animate-fade-in-up' : 'opacity-0'}`} style={{animationDelay: isVisible ? '0.2s': '0s'}}>
-      {/* Dot */}
-      <div className="absolute left-[-0.375rem] top-6 w-4 h-4 bg-primary rounded-full border-2 border-neutral-800 group-hover:bg-primary-light transition-colors duration-200 z-10"></div>
+    <div ref={itemRef} className="relative flex items-center justify-between md:justify-normal w-full group py-4">
       
-      {/* SVG Line - only if not the last item */}
-      {!isLast && lineHeight > 0 && (
-        <svg 
-            className="absolute left-0 top-6 w-1 overflow-visible" // Adjusted left to align with dot center
-            height={lineHeight} // Dynamic height
-            style={{ transform: 'translate(-0.5px, 16px)'}} // Move half pixel left, and 16px down (dot height/2 + border)
-        >
-          <line 
-            x1="0" 
-            y1="0" 
-            x2="0" 
-            y2={lineHeight -16} // Line ends slightly above next item's implied start
-            strokeWidth="2" 
-            className={`stroke-neutral-600 ${isVisible ? 'animate-svg-line-draw' : ''}`}
-            strokeDasharray={svgLineInitialLength}
-            strokeDashoffset={isVisible ? 0 : svgLineInitialLength}
-            style={{transition: 'stroke-dashoffset 1s ease-out 0.3s'}} // JS handles visibility, CSS transition handles draw
-          />
-        </svg>
-      )}
+      {/* Timeline Dot 
+        Absolutely positioned. On mobile: left side. On desktop: dead center.
+      */}
+      <div 
+        ref={dotRef}
+        className="absolute left-[20px] md:left-1/2 w-5 h-5 rounded-full border-[4px] border-neutral-900 transform -translate-x-1/2 z-10 shadow-[0_0_15px_rgba(129,140,248,0.0)] group-hover:shadow-[0_0_15px_rgba(129,140,248,0.6)] transition-shadow duration-300"
+      ></div>
 
-      {/* Content */}
-      <div className="ml-4 timeline-content">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
-          <h3 className="text-xl font-semibold text-primary-light">{experience.role}</h3>
-          <p className="text-sm text-neutral-400 sm:text-right">{experience.startDate} - {experience.endDate}</p>
+      {/* Card Wrapper (Alternating Layout Logic)
+        Mobile: Full width, margin left. 
+        Desktop: 5/12 width (to leave room for center line), alternating margins.
+      */}
+      <div className={`w-full md:w-5/12 ml-14 md:ml-0 ${isEven ? 'md:pr-12 md:text-right md:ml-0' : 'md:pl-12 md:ml-auto'}`}>
+        
+        {/* The Glassmorphic Experience Card */}
+        <div 
+          ref={cardRef}
+          className="bg-neutral-800/40 backdrop-blur-md border border-neutral-700/50 p-6 rounded-2xl shadow-xl hover:shadow-primary/10 hover:border-primary/50 transition-all duration-300 relative overflow-hidden"
+        >
+          {/* Subtle background glow on hover */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+          <div className="relative z-10">
+            {/* Date Badge & Role */}
+            <div className={`flex flex-col ${isEven ? 'md:items-end' : 'md:items-start'} mb-4`}>
+              <span className="text-xs font-bold text-primary-light bg-primary/10 border border-primary/20 px-3 py-1 rounded-full mb-3 inline-block tracking-wide">
+                {experience.startDate} — {experience.endDate}
+              </span>
+              <h3 className="text-2xl font-bold text-neutral-100 leading-tight mb-1">{experience.role}</h3>
+              <h4 className="text-md font-medium text-secondary-light">{experience.company}</h4>
+            </div>
+
+            {/* Responsibilities List */}
+            <ul className={`space-y-2.5 text-sm text-neutral-300 ${isEven ? 'md:text-right' : 'text-left'} mt-4`}>
+              {experience.responsibilities.map((resp, i) => (
+                <li key={i} className={`flex items-start ${isEven ? 'md:flex-row-reverse' : 'flex-row'}`}>
+                  {/* Custom Bullet Point */}
+                  <span className={`text-primary/70 mt-1 text-xs ${isEven ? 'md:ml-3 ml-0 mr-3 md:mr-0' : 'mr-3'}`}>◆</span>
+                  <span className="leading-relaxed">{resp}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <p className="text-md font-medium text-neutral-200 mb-2">{experience.company}</p>
-        <ul className="list-disc list-outside pl-5 space-y-1 text-neutral-300 text-sm">
-          {experience.responsibilities.map((resp, index) => (
-            <li key={index}>{resp}</li>
-          ))}
-        </ul>
+
       </div>
     </div>
   );

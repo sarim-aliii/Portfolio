@@ -1,7 +1,12 @@
-import React from 'react';
+import { useRef } from 'react';
 import { SECTION_IDS } from '../constants';
 import Section from './Section';
 import TimelineItem from './TimelineItem';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const experienceData = [
   {
@@ -44,12 +49,50 @@ const experienceData = [
 ];
 
 const ExperienceSection = () => {
+  const sectionRef = useRef(null);
+  const lineRef = useRef(null);
+
+  useGSAP(() => {
+    // Animate the central timeline line drawing downwards as you scroll
+    gsap.fromTo(lineRef.current, 
+      { scaleY: 0 },
+      { 
+        scaleY: 1, 
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top center", // Start drawing when top of section hits center of viewport
+          end: "bottom center", // Finish drawing when bottom of section hits center
+          scrub: 1, // Smooth scrubbing effect linked to scrollbar
+        }
+      }
+    );
+  }, { scope: sectionRef });
+
   return (
-    <Section id={SECTION_IDS.EXPERIENCE} title="My Experience" className="bg-neutral-900">
-      <div className="relative">
-        {experienceData.map((exp, index) => (
-          <TimelineItem key={exp.id} experience={exp} isLast={index === experienceData.length -1}/>
-        ))}
+    <Section id={SECTION_IDS.EXPERIENCE} title="My Experience" className="bg-neutral-900 overflow-hidden">
+      <div ref={sectionRef} className="relative max-w-5xl mx-auto py-10">
+        
+        {/* Background Track Line */}
+        <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-1 bg-neutral-800 rounded-full transform md:-translate-x-1/2"></div>
+        
+        {/* Animated Progress Line (Primary Color) */}
+        <div 
+          ref={lineRef} 
+          className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary-light via-primary to-primary-dark rounded-full transform md:-translate-x-1/2 origin-top shadow-[0_0_15px_rgba(99,102,241,0.8)]"
+        ></div>
+
+        <div className="space-y-12 md:space-y-24">
+          {experienceData.map((exp, index) => (
+            <TimelineItem 
+              key={exp.id} 
+              experience={exp} 
+              index={index} // Pass index to determine left/right alternating layout
+              isLast={index === experienceData.length - 1}
+            />
+          ))}
+        </div>
+
       </div>
     </Section>
   );

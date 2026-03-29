@@ -1,7 +1,12 @@
+import { useRef } from 'react';
 import { SECTION_IDS, PROJECT_PLACEHOLDER_IMAGE_BASE } from '../constants';
 import Section from './Section';
 import ProjectCard from './ProjectCard';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
 
 const projectsData = [
   {
@@ -12,7 +17,7 @@ const projectsData = [
     imageUrl: `${PROJECT_PLACEHOLDER_IMAGE_BASE}/dc2626/FFFFFF?text=Kairon+AI`,
     githubUrl: 'https://github.com/sarim-aliii/version2',
     liveDemoUrl: 'https://version2-mdrc.onrender.com/',
-},
+  },
   {
     id: 'project2',
     title: 'Airbnb Clone',
@@ -113,40 +118,62 @@ const projectsData = [
     liveDemoUrl: 'https://agentdoc--rag-chat-assistant.streamlit.app/'
   },
   {
-    "id": "project13",
-    "title": "Ensemble AI Tag Extractor - A Multi-Method Analysis Tool",
-    "description": "A sophisticated text analysis application that uses a multi-method ensemble to provide robust and context-aware keyword extraction. The system orchestrates three parallel methods (a simple Gazetteer search, a spaCy NER model, and an LLM extractor) using LangGraph. A final LLM agent aggregates and ranks the combined results to identify the most significant tags. The entire pipeline is wrapped in a full-featured Streamlit web interface with interactive visualizations, including color-coded text highlighting and tag frequency charts.",
-    "technologies": ["Python", "Streamlit", "LangGraph", "LangChain", "Google Gemini", "spaCy", "Pandas", "Matplotlib", "Pydantic"],
-    "imageUrl": `${PROJECT_PLACEHOLDER_IMAGE_BASE}/6A0DAD/FFFFFF?text=Ensemble+Tag+Extractor`,
-    "githubUrl": "https://github.com/sarim-aliii/ensemble-ai-tag-extractor",
-    "liveDemoUrl": "https://ensemble-ai-tag-extractor.streamlit.app/"
+    id: "project13",
+    title: "Ensemble AI Tag Extractor",
+    description: "A sophisticated text analysis application that uses a multi-method ensemble to provide robust and context-aware keyword extraction. The system orchestrates three parallel methods using LangGraph. A final LLM agent aggregates and ranks the combined results.",
+    technologies: ["Python", "Streamlit", "LangGraph", "LangChain", "Google Gemini", "spaCy", "Pandas", "Matplotlib", "Pydantic"],
+    imageUrl: `${PROJECT_PLACEHOLDER_IMAGE_BASE}/6A0DAD/FFFFFF?text=Ensemble+Tag+Extractor`,
+    githubUrl: "https://github.com/sarim-aliii/ensemble-ai-tag-extractor",
+    liveDemoUrl: "https://ensemble-ai-tag-extractor.streamlit.app/"
   },
   {
-    "id": "project14",
-    "title": "ReelFeel: IMDB Movie Review Sentiment Analysis",
-    "description": "A deep learning web application that classifies movie reviews as Positive or Negative using Recurrent Neural Networks (RNN). The system features end-to-end NLP preprocessing, including tokenization and sequence padding, to deliver real-time sentiment scores. The application is built with a minimalist Streamlit interface and includes interactive elements like word cloud generation to visualize impactful keywords from user input.",
-    "technologies": ["Python", "TensorFlow", "Keras", "Streamlit", "RNN", "NLP", "Scikit-learn", "WordCloud", "NumPy"],
-    "imageUrl": "https://placehold.co/600x400/003366/FFFFFF?text=ReelFeel+Sentiment+Analysis",
-    "githubUrl": "https://github.com/sarim-aliii/imdb-sentiment-rnn",
-    "liveDemoUrl": "https://imdb-movie-review-analysis-rnn.streamlit.app/"
+    id: "project14",
+    title: "ReelFeel: IMDB Movie Review Sentiment Analysis",
+    description: "A deep learning web application that classifies movie reviews as Positive or Negative using Recurrent Neural Networks (RNN). The system features end-to-end NLP preprocessing, including tokenization and sequence padding, to deliver real-time sentiment scores.",
+    technologies: ["Python", "TensorFlow", "Keras", "Streamlit", "RNN", "NLP", "Scikit-learn", "WordCloud", "NumPy"],
+    imageUrl: "https://placehold.co/600x400/003366/FFFFFF?text=ReelFeel+Sentiment+Analysis",
+    githubUrl: "https://github.com/sarim-aliii/imdb-sentiment-rnn",
+    liveDemoUrl: "https://imdb-movie-review-analysis-rnn.streamlit.app/"
   },
   {
-    "id": "project15",
-    "title": "Next Word Prediction using LSTM",
-    "description": "An interactive deep learning application that uses Long Short-Term Memory (LSTM) networks to predict the most likely succeeding word in a given text sequence. The system features a sophisticated language model trained to capture long-range dependencies in text, providing Top-K predictions with associated confidence scores. Deployed via Streamlit, the app utilizes model caching for high-performance inference and real-time user interaction.",
-    "technologies": ["Python", "TensorFlow", "Keras", "LSTM", "Streamlit", "NumPy", "Pickle", "NLP"],
-    "imageUrl": "https://placehold.co/600x400/2E7D32/FFFFFF?text=Next+Word+LSTM+Predictor",
-    "githubUrl": "https://github.com/sarim-aliii/next-word-prediction-lstm",
-    "liveDemoUrl": "https://sentence-next-word-prediction-lstm.streamlit.app/"
+    id: "project15",
+    title: "Next Word Prediction using LSTM",
+    description: "An interactive deep learning application that uses Long Short-Term Memory (LSTM) networks to predict the most likely succeeding word in a given text sequence. The system features a sophisticated language model trained to capture long-range dependencies in text.",
+    technologies: ["Python", "TensorFlow", "Keras", "LSTM", "Streamlit", "NumPy", "Pickle", "NLP"],
+    imageUrl: "https://placehold.co/600x400/2E7D32/FFFFFF?text=Next+Word+LSTM+Predictor",
+    githubUrl: "https://github.com/sarim-aliii/next-word-prediction-lstm",
+    liveDemoUrl: "https://sentence-next-word-prediction-lstm.streamlit.app/"
   }
 ];
 
 const ProjectsSection = () => {
+  const containerRef = useRef(null);
+
+  useGSAP(() => {
+    const cards = gsap.utils.toArray('.gsap-project-card');
+
+    gsap.set(cards, { y: 100, opacity: 0 });
+
+    ScrollTrigger.batch(cards, {
+      onEnter: (elements) => {
+        gsap.to(elements, {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power3.out',
+          overwrite: true
+        });
+      },
+      start: 'top 85%',
+    });
+  }, { scope: containerRef });
+
   return (
     <Section id={SECTION_IDS.PROJECTS} title="My Projects" className="bg-neutral-800">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-[1000px]">
         {projectsData.map(project => (
-          <div key={project.id} className="group/card">
+          <div key={project.id} className="gsap-project-card group/card">
             <ProjectCard project={project} />
           </div>
         ))}

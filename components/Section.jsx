@@ -1,56 +1,62 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
 
 const Section = ({ id, children, className = '', title, titleClassName = '' }) => {
-  const [hasIntersected, setHasIntersected] = useState(false);
   const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const lineRef = useRef(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasIntersected) {
-          setHasIntersected(true);
-          observer.unobserve(entry.target); 
+  useGSAP(() => {
+    // Only animate if a title exists
+    if (titleRef.current) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%', // Triggers when the top of the section hits 80% down the screen
+          toggleActions: 'play none none reverse'
         }
-      },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1, 
-      }
-    );
+      });
 
-    const currentRef = sectionRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
+      tl.fromTo(titleRef.current, 
+        { y: -20, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }
+      )
+      .fromTo(lineRef.current,
+        { scaleX: 0, opacity: 0 },
+        { scaleX: 1, opacity: 1, duration: 0.5, ease: 'power2.out', transformOrigin: 'center' },
+        "-=0.3"
+      );
     }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, [hasIntersected]);
+  }, { scope: sectionRef });
 
   return (
     <section 
       id={id} 
       ref={sectionRef}
-      className={`group/section py-16 md:py-24 transition-opacity duration-700 ease-out ${className} ${hasIntersected ? 'opacity-100 is-visible' : 'opacity-0'}`}
+      className={`relative py-16 md:py-24 ${className}`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-xl">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-xl relative z-10">
         {title && (
-          <div className={`mb-12 md:mb-16 text-center opacity-0 ${hasIntersected ? 'animate-fade-in-up' : ''}`}>
-            <h2 className={`text-3xl sm:text-4xl font-bold text-neutral-100 ${titleClassName} ${hasIntersected ? 'animate-title-breathe' : ''}`}>
+          <div className="mb-12 md:mb-16 text-center">
+            <h2 
+              ref={titleRef}
+              className={`text-3xl sm:text-4xl font-bold text-neutral-100 ${titleClassName} opacity-0`}
+            >
               {title}
             </h2>
-            <div className="w-24 h-1 mx-auto mt-4 bg-primary rounded"></div>
+            <div 
+              ref={lineRef}
+              className="w-24 h-1.5 mx-auto mt-4 bg-primary rounded-full opacity-0 shadow-[0_0_10px_rgba(99,102,241,0.6)]"
+            ></div>
           </div>
         )}
-        <div 
-            className={`opacity-0 ${hasIntersected ? 'animate-fade-in-up' : ''}`}
-            style={hasIntersected ? { animationDuration: '0.7s' } : {animationDuration: '0.7s'}}
-        >
+        
+        {/* Child components handle their own specific GSAP stagger animations */}
+        <div className="relative">
          {children}
         </div>
       </div>
