@@ -76,7 +76,7 @@ const HeroSection = () => {
   const [showInnovator, setShowInnovator] = useState(false);
   const [showCaret, setShowCaret] = useState(true);
   
-  const typeTargetText = "Software Engineer | Web Developer | ";
+  const typeTargetText = "Software Developer | MERN Developer | ";
   const innovatorText = "Problem Solver";
   const typingSpeed = 70;
   const innovatorDelay = 500;
@@ -206,8 +206,7 @@ const HeroSection = () => {
           </div>
 
           <p className="hero-anim hero-desc text-lg text-neutral-300 mb-8 max-w-xl mx-auto md:mx-0">
-            A passionate Computer Science student dedicated to crafting innovative software solutions and exploring the frontiers of technology and hands-on experience in Data Structures and Algorithms.
-            Currently focused on full-stack development and artificial intelligence.
+            A Full Stack & Software Developer skilled in building scalable web applications using Node.js, React, and MongoDB. Passionate about integrating LLM technologies like LangChain and LangGraph, with a strong foundation in DSA, having solved over 1450+ LeetCode problems.
           </p>
           <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <button

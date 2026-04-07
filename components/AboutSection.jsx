@@ -133,7 +133,7 @@ const AboutSection = () => {
         {/* LEFT COLUMN */}
         <div className="lg:col-span-3 space-y-10">
           <p className="about-text text-neutral-200 text-lg md:text-xl leading-relaxed">
-            Hi there! I'm <span className="font-bold text-primary-light">Sarim Ali</span>, a driven Computer Science student with a profound interest in developing impactful software. My journey into the world of coding began with a simple "Hello, World!" and has since evolved into a passion for solving complex problems through elegant and efficient code.
+            Hi there! I'm <span className="font-bold text-primary-light">Sarim Ali</span>, a Computer Science Engineering student at B.M.S. College of Engineering (GPA: 9.46) with a profound interest in developing impactful software. My journey into coding began with a simple "Hello, World!" and has since evolved into a passion for full-stack development, AI/LLMs, and algorithmic problem-solving with over 1450+ LeetCode problems solved.
           </p>
 
           {/* My Journey */}
