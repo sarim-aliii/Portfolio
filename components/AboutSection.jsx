@@ -221,7 +221,7 @@ const AboutSection = () => {
                 <span className="text-secondary mr-3 text-lg">•</span> Mobile Application Development
               </li>
               <li className="flex items-center transform transition-transform hover:translate-x-2">
-                <span className="text-secondary mr-3 text-lg">•</span> Full-Stack Web Applications
+                <span className="text-secondary mr-3 text-lg">•</span> Machine Learning
               </li>
             </ul>
           </div>
