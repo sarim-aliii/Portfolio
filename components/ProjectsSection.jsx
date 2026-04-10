@@ -143,7 +143,16 @@ const projectsData = [
     imageUrl: "/15.jpg",
     githubUrl: "https://github.com/sarim-aliii/next-word-prediction-lstm",
     liveDemoUrl: "https://sentence-next-word-prediction-lstm.streamlit.app/"
-  }
+  },
+  {
+    "id": "project16",
+    "title": "BMSCE Digital Excellence Portal",
+    "description": "A next-generation institutional platform designed for modern academic administration. It features a multilingual AI academic advisor powered by Gemini Pro, an innovation hub showcasing advanced lab infrastructure, and a secure admin command center for managing courses, departments, and faculty.",
+    "technologies": ["React 18", "TypeScript", "Vite", "Firebase", "Google Gemini API", "Tailwind CSS", "Framer Motion", "GSAP"],
+    "imageUrl": "/bmsce-portal.jpg",
+    "githubUrl": "https://github.com/sarim-aliii/browser-battle-codeathon",
+    "liveDemoUrl": "https://browser-battle-codeathon.vercel.app/"
+  },
 ];
 
 const ProjectsSection = () => {
