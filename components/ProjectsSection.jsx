@@ -153,6 +153,25 @@ const projectsData = [
     "githubUrl": "https://github.com/sarim-aliii/browser-battle-codeathon",
     "liveDemoUrl": "https://browser-battle-codeathon.vercel.app/"
   },
+  {
+    "id": "project17",
+    "title": "EduAnalytics: Student Performance Dashboard",
+    "description": "A full-stack, AI-powered platform designed for educators to track, analyze, and report on student performance metrics. It provides deep insights, beautiful data visualizations, and automated email reporting.",
+    "technologies": [
+      "React 19",
+      "TypeScript",
+      "Vite",
+      "Firebase",
+      "Express.js",
+      "Google Gemini API",
+      "Tailwind CSS",
+      "Recharts",
+      "GSAP"
+    ],
+    "imageUrl": "/17.jpg",
+    "githubUrl": "https://github.com/sarim-aliii/student-performance-dashboard",
+    "liveDemoUrl": "https://student-performance-dashboard-avny.onrender.com/"
+  }
 ];
 
 const ProjectsSection = () => {

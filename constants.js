@@ -16,6 +16,19 @@ export const PROJECT_PLACEHOLDER_IMAGE_BASE = "https://placehold.co/600x400";
 
 export const competitions = [
   {
+    "title": "Browser Battle",
+    "organization": "College of Engineering, Bengaluru",
+    "date": "March 2026",
+    "highlight": "⚔️ Participant",
+    "link": "",
+    "points": [
+      "Enthusiastically participated in the Browser Battle event held on 27th March 2026",
+      "Engaged in competitive technical challenges and demonstrated problem-solving skills",
+      "Recognized by the Department of Machine Learning for active involvement and commitment",
+      "Fostered competitive programming and technical enthusiasm alongside peers"
+    ]
+  },
+  {
     "title": "Winter of Code Social 2025",
     "organization": "Code Social",
     "date": "Nov 2025 - Jan 2026",
