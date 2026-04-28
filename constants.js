@@ -20,7 +20,7 @@ export const competitions = [
     "organization": "College of Engineering, Bengaluru",
     "date": "March 2026",
     "highlight": "⚔️ Participant",
-    "link": "",
+    "link": "https://drive.google.com/file/d/1D0iGKNsCnnbMKCTbiKUIk3WBWKyhSieD/view?usp=sharing",
     "points": [
       "Enthusiastically participated in the Browser Battle event held on 27th March 2026",
       "Engaged in competitive technical challenges and demonstrated problem-solving skills",
