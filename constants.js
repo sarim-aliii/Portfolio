@@ -16,6 +16,19 @@ export const PROJECT_PLACEHOLDER_IMAGE_BASE = "https://placehold.co/600x400";
 
 export const competitions = [
   {
+    title: "AI for Bharat Hackathon",
+    organization: "AWS, Hack2skill & AI for Bharat",
+    date: "June 2026",
+    highlight: "🤖 GenAI Hackathon Participant",
+    link: "https://drive.google.com/file/d/1bIPS4ks5Rw83e_Mdzd4xhA0B05_FoHxI/view?usp=sharing",
+    points: [
+      "Built and submitted a qualified prototype for the AI for Bharat Hackathon",
+      "Developed a Generative AI solution leveraging AWS services and AI tools",
+      "Applied AI technologies to address real-world challenges relevant to India",
+      "Demonstrated end-to-end technical execution from ideation to prototype delivery"
+    ]
+  },
+  {
     "title": "Browser Battle",
     "organization": "College of Engineering, Bengaluru",
     "date": "March 2026",
