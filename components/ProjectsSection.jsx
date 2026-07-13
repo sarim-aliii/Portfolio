@@ -171,6 +171,26 @@ const projectsData = [
     "imageUrl": "/17.jpg",
     "githubUrl": "https://github.com/sarim-aliii/student-performance-dashboard",
     "liveDemoUrl": "https://student-performance-dashboard-avny.onrender.com/"
+  },
+  {
+    "id": "project18",
+    "title": "AI-Powered Commerce Platform",
+    "description": "A full-stack e-commerce platform integrating a Java Spring Boot backend, a React frontend, and a Python-based visual search microservice. Features include AI chatbot assistance, personalized product recommendations, and secure JWT authentication.",
+    "technologies": [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Java",
+      "Spring Boot",
+      "Maven",
+      "Python",
+      "JWT",
+      "Cloudinary",
+      "Docker"
+    ],
+    "imageUrl": "/18.png",
+    "githubUrl": "https://github.com/sarim-aliii/ai-powered-commerce-app",
+    "liveDemoUrl": "https://ai-powered-commerce-app.vercel.app/"
   }
 ];
 

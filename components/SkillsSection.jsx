@@ -8,42 +8,334 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const skillsData = [
-  { name: 'Java', proficiency: 'Proficient', category: 'Programming Languages', description: "Robust, object-oriented language for enterprise-level application development, Android apps, and large systems." },
-  { name: 'JavaScript(ES6+)', proficiency: 'Proficient', category: 'Programming Languages', description: "Core language for web development, enabling interactive and dynamic content on websites." },
-  { name: 'TypeScript', proficiency: 'Proficient', category: 'Programming Languages', description: "A statically typed superset of JavaScript that enhances code quality, scalability, and maintainability with type safety and modern development features." },
-  { name: 'Python', proficiency: 'Proficient', category: 'Programming Languages', description: "Versatile language known for its readability, widely used in web development, data science, AI, and scripting." },
-  { name: 'HTML/CSS', proficiency: 'Proficient', category: 'Programming Languages', description: "Foundational markup and styling languages for the web." },
+  // ===========================
+  // Programming Languages
+  // ===========================
+  {
+    name: "Java",
+    proficiency: "Proficient",
+    category: "Programming Languages",
+    description:
+      "Object-oriented programming language for enterprise applications, backend services, and scalable software development."
+  },
+  {
+    name: "JavaScript (ES6+)",
+    proficiency: "Proficient",
+    category: "Programming Languages",
+    description:
+      "Modern JavaScript for building interactive web applications using contemporary language features."
+  },
+  {
+    name: "TypeScript",
+    proficiency: "Proficient",
+    category: "Programming Languages",
+    description:
+      "Strongly typed JavaScript that improves scalability, maintainability, and developer productivity."
+  },
+  {
+    name: "Python",
+    proficiency: "Proficient",
+    category: "Programming Languages",
+    description:
+      "Versatile programming language used for backend development, AI/ML, automation, and scripting."
+  },
+  {
+    name: "HTML5 & CSS3",
+    proficiency: "Proficient",
+    category: "Programming Languages",
+    description:
+      "Core web technologies for building responsive and accessible user interfaces."
+  },
 
-  { name: 'React', proficiency: 'Proficient', category: 'Frameworks/Libraries', description: "A popular JavaScript library for building declarative and efficient user interfaces based on components." },
-  { name: 'Node.js', proficiency: 'Expert', category: 'Frameworks/Libraries', description: "Backend JavaScript runtime environment that allows running JavaScript code on the server-side." },
-  { name: 'Express.js', proficiency: 'Proficient', category: 'Frameworks/Libraries', description: "Minimalist and flexible Node.js web application framework for building APIs and web servers." },
-  { name: 'Tailwind CSS', proficiency: 'Proficient', category: 'Frameworks/Libraries', description: "A utility-first CSS framework for rapidly building custom user interfaces without leaving your HTML." },
-  { name: 'BootStrap', proficiency: 'Proficient', category: 'Frameworks/Libraries', description: "A utility-first CSS framework for rapidly building custom user interfaces without leaving your HTML." },
-  { name: 'Flask', proficiency: 'Proficient', category: 'Frameworks/Libraries', description: "A lightweight Python web framework used to build scalable backend applications and REST APIs with minimal boilerplate and flexible architecture."},
-  { name: 'Redux Toolkit', proficiency: 'Proficient', category: 'Frameworks/Libraries', description: "Predictable state container for JavaScript apps." },
+  // ===========================
+  // Frameworks & Libraries
+  // ===========================
+  {
+    name: "React",
+    proficiency: "Proficient",
+    category: "Frameworks/Libraries",
+    description:
+      "Component-based JavaScript library for building modern, responsive user interfaces."
+  },
+  {
+    name: "Redux Toolkit",
+    proficiency: "Proficient",
+    category: "Frameworks/Libraries",
+    description:
+      "Efficient state management solution for scalable React applications."
+  },
+  {
+    name: "Node.js",
+    proficiency: "Expert",
+    category: "Frameworks/Libraries",
+    description:
+      "JavaScript runtime for building scalable backend services and REST APIs."
+  },
+  {
+    name: "Express.js",
+    proficiency: "Proficient",
+    category: "Frameworks/Libraries",
+    description:
+      "Minimal and flexible Node.js framework for web applications and APIs."
+  },
+  {
+    name: "Spring Boot",
+    proficiency: "Proficient",
+    category: "Frameworks/Libraries",
+    description:
+      "Framework for developing production-ready Java applications, REST APIs, and microservices."
+  },
+  {
+    name: "Spring Data JPA",
+    proficiency: "Proficient",
+    category: "Frameworks/Libraries",
+    description:
+      "Simplifies database access using JPA repositories and Hibernate."
+  },
+  {
+    name: "Hibernate",
+    proficiency: "Proficient",
+    category: "Frameworks/Libraries",
+    description:
+      "ORM framework for mapping Java objects to relational databases."
+  },
+  {
+    name: "Spring Security",
+    proficiency: "Familiar",
+    category: "Frameworks/Libraries",
+    description:
+      "Authentication and authorization framework for securing Spring applications."
+  },
+  {
+    name: "Flask",
+    proficiency: "Proficient",
+    category: "Frameworks/Libraries",
+    description:
+      "Lightweight Python framework for REST APIs and backend development."
+  },
+  {
+    name: "Tailwind CSS",
+    proficiency: "Proficient",
+    category: "Frameworks/Libraries",
+    description:
+      "Utility-first CSS framework for rapidly building modern user interfaces."
+  },
+  {
+    name: "Bootstrap",
+    proficiency: "Proficient",
+    category: "Frameworks/Libraries",
+    description:
+      "Popular CSS framework for building responsive websites with reusable UI components."
+  },
 
-  { name: 'LangChain', proficiency: 'Proficient', category: 'AI/LLM Development', description: "A comprehensive framework for developing applications powered by LLMs. It provides modular components for prompt management, model interaction, data retrieval (RAG), and agent creation, simplifying the process of building complex, context-aware AI systems." },
-  { name: 'LangGraph', proficiency: 'Proficient', category: 'AI/LLM Development', description: "A library for building robust, stateful multi-agent systems on top of LangChain. It allows developers to define complex workflows as cyclical graphs, enabling advanced patterns like parallel execution and agent revision loops." },
-  { name: 'LangSmith', proficiency: 'Proficient', category: 'AI/LLM Development & Observability', description: "A unified platform for debugging, testing, evaluating, and monitoring LLM applications. It provides full observability into agent traces, making it easier to understand model behavior, diagnose errors, and improve performance." },
-  { name: 'Machine Learning & NLP', proficiency: 'Proficient', category: 'AI/LLM Development', description: "Experience with Deep Learning (ANN, CNN, RNN), Transformers, and NLP libraries like NLTK/Spacy." },
-  { name: 'MLflow', proficiency: 'Familiar', category: 'AI/LLM Development', description: "Open source platform for the machine learning lifecycle." },
+  // ===========================
+  // AI / LLM
+  // ===========================
+  {
+    name: "LangChain",
+    proficiency: "Proficient",
+    category: "AI/LLM Development",
+    description:
+      "Framework for building LLM-powered applications, RAG pipelines, and AI agents."
+  },
+  {
+    name: "LangGraph",
+    proficiency: "Proficient",
+    category: "AI/LLM Development",
+    description:
+      "Framework for creating stateful AI agents and multi-agent workflows."
+  },
+  {
+    name: "LangSmith",
+    proficiency: "Proficient",
+    category: "AI/LLM Development",
+    description:
+      "Platform for debugging, testing, evaluating, and monitoring LLM applications."
+  },
+  {
+    name: "Machine Learning & NLP",
+    proficiency: "Proficient",
+    category: "AI/LLM Development",
+    description:
+      "Experience with deep learning, transformers, embeddings, NLP, and model evaluation."
+  },
+  {
+    name: "MLflow",
+    proficiency: "Familiar",
+    category: "AI/LLM Development",
+    description:
+      "Platform for experiment tracking, model management, and ML lifecycle."
+  },
 
-  { name: 'MongoDB', proficiency: 'Proficient', category: 'Databases', description: "A NoSQL document-oriented database that stores data in flexible, JSON-like documents, suitable for scalable applications." },
-  { name: 'MySQL', proficiency: 'Proficient', category: 'Databases', description: "Widely-used open-source relational database management system, popular for web applications." },
-  { name: 'Vector Databases', proficiency: 'Proficient', category: 'Databases', description: "Databases optimized for storing and querying high-dimensional vector embeddings for AI." },
+  // ===========================
+  // Databases
+  // ===========================
+  {
+    name: "MySQL",
+    proficiency: "Proficient",
+    category: "Databases",
+    description:
+      "Relational database for transactional applications and SQL-based data management."
+  },
+  {
+    name: "MongoDB",
+    proficiency: "Proficient",
+    category: "Databases",
+    description:
+      "NoSQL document database designed for scalable and flexible applications."
+  },
+  {
+    name: "Postgres SQL",
+    proficiency: "Proficient",
+    category: "Databases",
+    description:
+      "Databases optimized for storing and searching vector embeddings in AI applications."
+  },
 
-  { name: 'AWS (EC2/S3)', proficiency: 'Familiar', category: 'Cloud & Backend', description: "Cloud computing web services for hosting and storage." },
-  { name: 'Docker', proficiency: 'Familiar', category: 'Cloud & Backend', description: "Platform for developing, shipping, and running applications in containers." },
-  { name: 'JWT Authentication', proficiency: 'Proficient', category: 'Cloud & Backend', description: "Securing APIs and managing user sessions." },
+  // ===========================
+  // Cloud & Backend
+  // ===========================
+  {
+    name: "REST APIs",
+    proficiency: "Expert",
+    category: "Cloud & Backend",
+    description:
+      "Designing scalable RESTful APIs following industry best practices."
+  },
+  {
+    name: "JWT Authentication",
+    proficiency: "Proficient",
+    category: "Cloud & Backend",
+    description:
+      "Secure authentication and authorization using JSON Web Tokens."
+  },
+  {
+    name: "Docker",
+    proficiency: "Proficient",
+    category: "Cloud & Backend",
+    description:
+      "Containerizing and deploying applications with Docker."
+  },
+  {
+    name: "AWS (EC2 & S3)",
+    proficiency: "Familiar",
+    category: "Cloud & Backend",
+    description:
+      "Deploying applications and managing storage using Amazon Web Services."
+  },
+  {
+    name: "Apache Kafka",
+    proficiency: "Familiar",
+    category: "Cloud & Backend",
+    description:
+      "Distributed event streaming platform for asynchronous communication between services."
+  },
+  {
+    name: "Microservices",
+    proficiency: "Familiar",
+    category: "Cloud & Backend",
+    description:
+      "Developing modular backend systems using service-oriented architecture."
+  },
 
-  { name: 'Git & GitHub', proficiency: 'Expert', category: 'Tools', description: "Essential version control system (Git) and web-based hosting service (GitHub) for collaboration and code management." },
-  { name: 'Firebase', proficiency: 'Expert', category: 'Tools', description: "Google's Backend-as-a-Service (BaaS) platform for building web and mobile apps with services like authentication, NoSQL databases, and hosting." },
-  { name: 'Appwrite', proficiency: 'Proficient', category: 'Tools', description: "An open-source, self-hostable Backend-as-a-Service (BaaS) platform that provides developers with a set of APIs for authentication, databases, and storage." },
-  { name: 'Figma', proficiency: 'Proficient', category: 'Tools', description: "A collaborative interface design tool for creating wireframes, prototypes, and user interfaces." },
+  // ===========================
+  // Tools
+  // ===========================
+  {
+    name: "Git & GitHub",
+    proficiency: "Expert",
+    category: "Tools",
+    description:
+      "Version control, collaboration, branching strategies, and code management."
+  },
+  {
+    name: "Maven",
+    proficiency: "Proficient",
+    category: "Tools",
+    description:
+      "Dependency management and build automation for Java applications."
+  },
+  {
+    name: "Gradle",
+    proficiency: "Familiar",
+    category: "Tools",
+    description:
+      "Modern build automation tool for Java and multi-project builds."
+  },
+  {
+    name: "JUnit",
+    proficiency: "Familiar",
+    category: "Tools",
+    description:
+      "Unit testing framework for Java applications."
+  },
+  {
+    name: "Linux",
+    proficiency: "Proficient",
+    category: "Tools",
+    description:
+      "Working with Linux environments, shell commands, and server administration basics."
+  },
+  {
+    name: "Firebase",
+    proficiency: "Expert",
+    category: "Tools",
+    description:
+      "Backend-as-a-Service platform providing authentication, databases, storage, and hosting."
+  },
+  {
+    name: "Appwrite",
+    proficiency: "Proficient",
+    category: "Tools",
+    description:
+      "Open-source Backend-as-a-Service platform for authentication, databases, and storage."
+  },
+  {
+    name: "Figma",
+    proficiency: "Proficient",
+    category: "Tools",
+    description:
+      "Designing wireframes, UI prototypes, and collaborative design systems."
+  },
 
-  { name: 'Agile Development', proficiency: 'Proficient', category: 'Concepts', description: "Iterative approach to project management and software development that helps teams deliver value faster." },
-  { name: 'RESTful APIs', proficiency: 'Expert', category: 'Concepts', description: "Architectural style for designing networked applications, focusing on stateless client-server communication." },
-  { name: 'Data Structures & Algorithms', proficiency: 'Expert', category: 'Concepts', description: "Fundamental computer science concepts for organizing data efficiently and solving problems effectively." },
+  // ===========================
+  // Concepts
+  // ===========================
+  {
+    name: "Data Structures & Algorithms",
+    proficiency: "Expert",
+    category: "Concepts",
+    description:
+      "Problem-solving using efficient algorithms and optimized data structures."
+  },
+  {
+    name: "Object-Oriented Programming",
+    proficiency: "Expert",
+    category: "Concepts",
+    description:
+      "Strong understanding of encapsulation, inheritance, polymorphism, abstraction, and SOLID principles."
+  },
+  {
+    name: "Design Patterns",
+    proficiency: "Proficient",
+    category: "Concepts",
+    description:
+      "Applying common software design patterns to create maintainable and scalable applications."
+  },
+  {
+    name: "ORM (JPA/Hibernate)",
+    proficiency: "Proficient",
+    category: "Concepts",
+    description:
+      "Mapping Java objects to relational databases using JPA and Hibernate."
+  },
+  {
+    name: "Agile Development",
+    proficiency: "Proficient",
+    category: "Concepts",
+    description:
+      "Collaborative software development using Agile methodologies and iterative delivery."
+  }
 ];
 
 const proficiencyStyles = {
