@@ -191,6 +191,22 @@ const projectsData = [
     "imageUrl": "/18.png",
     "githubUrl": "https://github.com/sarim-aliii/ai-powered-commerce-app",
     "liveDemoUrl": "https://ai-powered-commerce-app.vercel.app/"
+  },
+  {
+    "id": "project19",
+    "title": "GitHub Issue MCP",
+    "description": "An open-source npm package implementing a Model Context Protocol (MCP) server and client for managing GitHub issues. It provides AI agents with tools to list, create, check for duplicates, and automatically generate GitHub issues with built-in workflow automation.",
+    "technologies": [
+      "TypeScript",
+      "Node.js",
+      "Model Context Protocol (MCP)",
+      "GitHub API",
+      "npm",
+      "Jest"
+    ],
+    "imageUrl": "/19.png",
+    "githubUrl": "https://github.com/sarim-aliii/github-issue-mcp",
+    "liveDemoUrl": "https://www.npmjs.com/package/github-issue-mcp"
   }
 ];
 
